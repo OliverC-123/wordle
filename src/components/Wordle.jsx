@@ -8,11 +8,18 @@ import keys from "./Keys";
 
 import Modal from "./Modal";
 
-export default function Wordle({ solution }) {
+export default function Wordle({ solution, solutions }) {
   const [showModal, setShowModal] = useState(false);
 
-  const { currentGuess, guesses, turn, isCorrect, usedKeys, handleKeyup } =
-    useWordle(solution);
+  const {
+    currentGuess,
+    guesses,
+    turn,
+    isCorrect,
+    usedKeys,
+    currentError,
+    handleKeyup,
+  } = useWordle(solution, solutions);
 
   // useEffect to monitor Keyup
   useEffect(() => {
@@ -47,9 +54,10 @@ export default function Wordle({ solution }) {
   return (
     <div>
       <h1>Current Guess - {currentGuess}</h1>
+      <p>{currentError}</p>
       <Grid guesses={guesses} currentGuess={currentGuess} turn={turn} />
       <Keypad keys={keys} usedKeys={usedKeys} />
-      {(isCorrect || turn === 5) && (
+      {(isCorrect || turn === 6) && (
         <Modal isCorrect={isCorrect} turn={turn} solution={solution} />
       )}
     </div>

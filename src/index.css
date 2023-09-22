@@ -6,12 +6,15 @@ body {
   text-transform: uppercase;
 }
 h1 {
+  margin: 0;
   font-size: 1.2em;
   padding: 20px 0;
   border-bottom: 1px solid #eee;
-  margin: 0 0 30px 0;
   color: #333;
   text-transform: capitalize;
+}
+.Wordle {
+  font-size: 2em;
 }
 
 /* ROW CSS */
@@ -22,15 +25,15 @@ h1 {
 }
 .row > div {
   display: block;
-  width: 60px;
-  height: 60px;
+  width: 40px;
+  height: 40px;
   border: 1px solid #bbb;
   margin: 4px;
   text-align: center;
-  line-height: 60px;
+  line-height: 40px;
   text-transform: uppercase;
   font-weight: bold;
-  font-size: 2.5em;
+  font-size: 2em;
 }
 .row > div.green {
   --background: #5ac85a;
@@ -86,17 +89,23 @@ h1 {
 }
 /* Keypad CSS */
 .keypad {
-  max-width: 500px;
-  margin: 20px auto;
+  max-width: 35%;
+  margin: 15px auto;
+}
+@media (max-width: 768px) {
+  /* You can adjust the screen width as needed */
+  .keypad {
+    max-width: 90%;
+  }
 }
 .keypad > div {
   margin: 5px;
   width: 40px;
-  height: 50px;
+  height: 40px;
   background: #eee;
   display: inline-block;
   border-radius: 6px;
-  line-height: 50px;
+  line-height: 40px;
 }
 .keypad > div.green {
   background: #5ac85a;
@@ -147,4 +156,28 @@ h1 {
   background-color: mediumseagreen;
   border-radius: 104px;
   cursor: pointer;
+}
+
+/* currentError h1 CSS */
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.currentError {
+  animation: shake 0.5s ease-in-out;
+  animation-iteration-count: 2; /* You can adjust the number of times it shakes */
 }
